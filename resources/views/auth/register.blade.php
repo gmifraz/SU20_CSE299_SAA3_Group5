@@ -42,7 +42,7 @@
                             <label for="category" class="col-md-4 col-form-label text-md-right">{{ __('Category') }}</label>
 
                             <div class="col-md-6">
-                                <input id="category" type="text" class="form-control @error('category') is-invalid @enderror" name="category" value="{{ old('category') }}" required autocomplete="category">
+                                <input id="category" type="text" class="form-control @error('category') is-invalid @enderror" name="category" value="{{ old('category') }}" required autocomplete="category" autofocus>
 
                                 @error('category')
                                     <span class="invalid-feedback" role="alert">
@@ -52,10 +52,10 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="Skills" class="col-md-4 col-form-label text-md-right">{{ __('Skills') }}</label>
+                            <label for="skills" class="col-md-4 col-form-label text-md-right">{{ __('Skills') }}</label>
 
                             <div class="col-md-6">
-                                <input id="skills" type="text" class="form-control @error('skills') is-invalid @enderror" name="skills" value="{{ old('skills') }}" required autocomplete="skills">
+                                <input id="skills" type="text" class="form-control @error('skills') is-invalid @enderror" name="skills" value="{{ old('skills') }}" required autocomplete="skills" autofocus>
 
                                 @error('skills')
                                     <span class="invalid-feedback" role="alert">
@@ -68,7 +68,7 @@
                             <label for="experience" class="col-md-4 col-form-label text-md-right">{{ __('Experience') }}</label>
 
                             <div class="col-md-6">
-                                <input id="experience" type="experience" class="form-control @error('experience') is-invalid @enderror" name="experience" value="{{ old('experience') }}" required autocomplete="experience">
+                                <input id="experience" type="text" class="form-control @error('experience') is-invalid @enderror" name="experience" value="{{ old('experience') }}" required autocomplete="experience" autofocus>
 
                                 @error('experience')
                                     <span class="invalid-feedback" role="alert">
