@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
-use App\Providers\RouteServiceProvider;
 use App\User;
-use Illuminate\Foundation\Auth\RegistersUsers;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Foundation\Auth\RegistersUsers;
+use App\Role;
 
 class RegisterController extends Controller
 {
@@ -29,7 +29,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectTo = '/home';
 
     /**
      * Create a new controller instance.
@@ -50,12 +50,10 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'category' => ['required', 'string', 'max:255'],
-            'skills' => ['required', 'string', 'max:255'],
-            'experience' => ['required', 'string', 'max:255'],
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:6|confirmed',
+            'role' => 'required|integer',
         ]);
     }
 
@@ -67,13 +65,32 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'category' => $data['category'],
-            'skills' => $data['skills'],
-            'experience' => $data['experience'],
-            'password' => Hash::make($data['password']),
-        ]);
+        
+        $User = new User;
+        $User->name = $data['name'];
+        $User->email = $data['email'];
+        $User->password = Hash::make($data['password']);
+        
+        $Role = Role::find($data['role']);
+        $Role->users()->save($User);
+        
+        return $User;
+        
+    }
+    
+    public function showRegistrationForm()
+    {
+        $Roles = Role::all();
+        
+        $RoleOptions = array();
+        if(count($Roles) >= 1){
+	        foreach($Roles as $Role){
+		        $RoleOptions[$Role->id] = $Role->name;
+	        }
+        } else{
+	        $RoleOptions[0] = 'No Roles Found';
+        }
+        
+        return view('auth.register')->with('RoleOptions', $RoleOptions);
     }
 }
