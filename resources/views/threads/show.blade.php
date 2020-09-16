@@ -1,18 +1,20 @@
 @extends('layouts.app')
-	
+
 @section('content')
-	
-	<h2>{{$Thread->Job->title}} - Messages </h2>
-	<p>{{$Thread->Job->description}}
-	
-	<hr>
-	
-	@if(count($Thread->Messages) > 0)
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header"><h2>{{ __('Conversation') }}</h2></div>
+
+                <div class="card-body">
+				<hr>
+				@if(count($Thread->Messages) > 0)
 	
 		<table>
 			@foreach($Thread->Messages as $Message)
 				<tr>
-					<th style="padding-right: 10px;">{{$Message->User->name}}</th>
+					<th style="padding-right: 10px;">{{$Message->User->name}} : </th>
 					<td>{{$Message->message}}</td>
 				</tr>
 			@endforeach
@@ -31,4 +33,11 @@
 		{{Form::submit('Send Message', ['class' => 'btn btn-primary'])}}
 	{{Form::close()}}
 	
+				
+                
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 @endsection

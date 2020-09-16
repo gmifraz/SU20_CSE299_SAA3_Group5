@@ -4,11 +4,16 @@
 
 	<h2>Edit a Job</h2>
 	
-	{{Form::open(['action' => ['JobsController@update', $Job->id], 'method' => 'POST'])}}
+		{{Form::open(['action' => ['JobsController@update', $Job->id], 'method' => 'POST'])}}
 	
 		<div class="form-group">
 			{{Form::label('title','Job Title')}}
 			{{Form::text('title',$Job->title, ['class' => 'form-control', 'placeholder' => 'Job Title'])}}
+		</div>
+		
+		<div class="form-group">
+			{{Form::label('category','Job Category')}}
+			{{Form::text('category',$Job->category, ['class' => 'form-control', 'placeholder' => 'Job category'])}}
 		</div>
 		
 		<div class="form-group">
@@ -24,6 +29,7 @@
 		{{Form::hidden('_method', 'PUT')}}
 	{{Form::submit('Update Job', ['class' => 'btn btn-primary'])}}
 	{{Form::close()}}
+	<hr>
 	
 	{{Form::open(['action' => ['JobsController@destroy', $Job->id], 'method' => 'POST'])}}
 	
@@ -31,5 +37,5 @@
 		{{Form::submit('Delete Job', ['class' => 'btn btn-danger'])}}
 	
 	{{Form::close()}}
-		
+
 @endsection

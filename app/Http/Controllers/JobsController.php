@@ -168,5 +168,3 @@ class JobsController extends Controller
         return redirect('/jobs')->with('success', 'The job has been removed');
     }
 }
-
-

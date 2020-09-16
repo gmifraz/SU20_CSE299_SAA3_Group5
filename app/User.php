@@ -41,15 +41,15 @@ class User extends Authenticatable
 	    return $this->hasMany('App\Job', 'user_id');
      }
     
-  //  public function Favourites(){
-	//    return $this->hasMany('App\Favourite');
-   // }
+   public function Favourites(){
+	  return $this->hasMany('App\Favourite');
+ }
     
-    //public function Threads(){
-	//    return $this->belongsToMany('App\Thread');
-  //  }
+    public function Threads(){
+	   return $this->belongsToMany('App\Thread');
+   }
     
-   // public function Messages(){
-	//    return $this->hasMany('App\Message', 'user_id');
-   // }
+   public function Messages(){
+	  return $this->hasMany('App\Message', 'user_id');
+   }
 }

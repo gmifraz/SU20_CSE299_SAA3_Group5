@@ -28,10 +28,7 @@
 						{{Form::label('budget','Job Budget')}}
 						{{Form::number('budget','', ['class' => 'form-control', 'placeholder' => 'Budget - $', 'step' => 'any'])}}
 				</div>
-
-				<button type="submit" class="btn btn-primary">
-				                  {{Form::submit('Post Job')}}
-                 </button>
+				    	{{Form::submit('Create Job', ['class' => 'btn btn-primary'])}}
 						{{Form::close()}}
                 
                 </div>

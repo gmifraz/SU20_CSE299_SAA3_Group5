@@ -14,16 +14,16 @@ class MenuController extends Controller
 	    $User = Auth::user();
 	    
 	    if(!is_null($User)){
-		   // $Menu['/home'] = 'Dashboard';
+		   $Menu['/home'] = 'Dashboard';
 		    
 		    if($User->hasRole('Client')){
 			    $Menu['/jobs'] = 'My Jobs';
                 $Menu['/jobs/create'] = 'Post a New Job';
-                $Menu['/jobs/edit'] = 'Edit Job';
 		    }
 		    
 		    if($User->hasRole('Freelancer')){
-			    $Menu['/jobsearch'] = 'Find a Job';
+				$Menu['/jobsearch'] = 'Find a Job';
+				$Menu['/profile'] = 'My Profile';
 		    }
 		    
 	    }

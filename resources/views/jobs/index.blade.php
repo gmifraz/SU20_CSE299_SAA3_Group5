@@ -15,8 +15,13 @@
 					@foreach($Jobs as $Job)
 
 					<a href="/jobs/{{$Job->id}}"><h4>{{$Job->title}}</h4></a>
-					<p>Budget: $ {{$Job->budget}}
-					<p>{{$Job->description}}
+					<p>Budget: $ {{$Job->budget}}</p>
+					<p>{{$Job->description}} </p>
+
+                    <a class="btn btn-primary" href="/jobs/{{$Job->id}}/edit">
+                                        Edit This Job
+                                    </a>
+
 			
 					<hr>
 				@endforeach
